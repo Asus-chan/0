@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang+"pl">
+<head>
+<title>technologia ajax</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<script>
+var ajax;
+if(typeof XMLHttpRequest == "undefined")
+{
+ajax = new ActiveXObject('Microsoft.XHMLTTP');
+}
+else
+{
+ajax = new XMLHttpRequest();
+}
+function pobierz(zasob, znacznik)
+{
+if(document.getElementById(znacznik) != null)
+{
+ajax.open("GET", "./"+zasob, "true");
+ajax.setRequestHeader("Content-Type", "application/x-www-from-urlencoded;charset=UTF-8");
+ajax.onreadystatechange = function()
+{
+if(ajax.readyState == 4 && ajax.status == 200) wypisz(ajax.responseText,znacznik);
+else document.getElementById(znacznik).innerHTML= "czekaj...";
+}
+ajax.send();
+}
+}
+function wypisz(daneJson, identyfikator)
+{
+var wyjście;
+var odpowiedz = eval("("+daneJson+")"); // JSON.parse(daneJson)
+wyjscie += '<table border="1">';
+wyjscie += '<tbody>';
+for(var i in odpowiedz.dane.ksiazka)
+{
+	wyjscie += '<tr>';
+	wyjscie += '<td>';
+	wyjście += odpowiedz.dane.ksiazka[i].tytul
+	wyjscie += '</td>';
+	wyjscie += '</tr>';
+}
+}
+</script>
+<div id="info">kliknij przycisk aby pobrac dane z serwerka</div>
+<input type="button" value="pobierz dane z serwera" onclick="pobierz('ksiazki.json', 'info');" /> 
+</body>
+</html>

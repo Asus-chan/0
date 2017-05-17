@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Strona pierwsza</title>
+<meta charset="utf-8" lang="pl">
+<style type="text/css">
+#strona{width: 800px;}
+#menu {float: left; width: 150px;}
+#tresc {float: left; width: 650px; text-align: center;}
+</style>
+</head>
+<body>
+<script>
+function dodaj()
+{
+var x1=document.getElementById("liczba1").value
+var x2=document.getElementById("liczba2").value
+if(x1 =="" || x2 == "")
+{
+document.getElementById("wynik").innerHTML = "Należy wypełnić oba pola";
+}
+else
+{
+var liczba1 = parseFloat(x1);
+var liczba2 = parseFloat(x2);
+var y = liczba1 + liczba2;
+document.getElementById("wynik").innerHTML = "Wynik działania równa się: "+y;
+}
+}
+
+function odejmij()
+{
+var x1=document.getElementById("liczba1").value
+var x2=document.getElementById("liczba2").value
+if(x1 =="" || x2 == "")
+{
+document.getElementById("wynik").innerHTML = "Należy wypełnić oba pola";
+}
+else
+{
+var liczba1 = parseFloat(x1);
+var liczba2 = parseFloat(x2);
+var y = liczba1 - liczba2;
+document.getElementById("wynik").innerHTML = "Wynik działania równa się: "+y;
+}
+}
+
+function pomnoz()
+{
+var x1=document.getElementById("liczba1").value
+var x2=document.getElementById("liczba2").value
+if(x1 =="" || x2 == "")
+{
+document.getElementById("wynik").innerHTML = "Należy wypełnić oba pola";
+}
+else
+{
+var liczba1 = parseFloat(x1);
+var liczba2 = parseFloat(x2);
+var y = liczba1 * liczba2;
+document.getElementById("wynik").innerHTML = "Wynik działania równa się: "+y;
+}
+}
+
+function dziel()
+{
+var x1=document.getElementById("liczba1").value
+var x2=document.getElementById("liczba2").value
+if(x1 =="" || x2 == "")
+{
+document.getElementById("wynik").innerHTML = "Należy wypełnić oba pola";
+}
+else
+{
+var liczba1 = parseFloat(x1);
+var liczba2 = parseFloat(x2);
+var y = liczba1 / liczba2;
+if(isFinite(y))
+
+document.getElementById("wynik").innerHTML = "Wynik działania równa się: "+y;
+
+else
+
+document.getElementById("wynik").innerHTML = "DZIELENIE PRZEZ 0 JEST ZABRONIONE!!!!!!";
+
+}
+}
+
+
+
+</script>
+<div id="strona">
+	<div id="naglowek"><a href="index.html"><img src="logo.jpg"></a></div> 
+	<div id="menu">
+	<a href ="strona1.html">Kalkulator</a><br /><br />
+	<a href ="strona2.php">STRONA2</a>
+	</div>
+	<div id="tresc">Strona1 HTML
+	<h2>Prosty Kalkulator</h2>
+	Wprowadź pierwszą liczbę:&nbsp;<input type="text" id="liczba1" value="" /><br /><br />
+	Wprowadź drugą liczbę:&nbsp;<input type="text" id="liczba2" value="" /><br /><br />
+	<button onclick="dodaj();">Dodawanie</button>
+	<button onclick="odejmij();">Odejmowanie</button>
+	<button onclick="pomnoz();">Mnożenie</button>
+	<button onclick="dziel();">Dzielenie</button>
+	<p id="wynik"></p>
+	</div>
+	<div style="clear: boot;"></div>
+</div>
+
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,3 @@
+Makro - umo¿liwia dodanie regu³ logicznych 
+Komentarz do makra
+

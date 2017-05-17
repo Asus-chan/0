@@ -1,0 +1,15 @@
+Aliasy - do skrócenia zapytania bazy
+
+SELECT nazwaOddzialu as n, imie, nazwisko FROM pracownicy as p, oddzialy as o WHERE p.oddzial=o.id_oddzialu ORDER BY n; 
+
+Grupa poleceñ DML
+
+INSERT INTO - wstawianie danych
+UPDATE - zmiana danych
+DELETE - usuwanie danych
+ 
+_____________________________________________________________________________________________________
+
+INSERT INTO nazwa_tabeli (nazwa_kol_3, nazwa_kol_1, nazwa_kol_2) VALUES (wartosc1, wartosc2, wartosc3);
+
+UPDATE nazwa_tabeli SET nazwa_kol_1 = nowa_wartosc

@@ -1,0 +1,33 @@
+CONNECT system;
+haslo do oracla: Santorini
+
+
+I.język odpytywania danych dql select
+
+II.język definiowania danych ddl
+
+III.bazuje na 3 poleceniach:
+1.create (tworzenie)    
+2.drop   (usuwanie)
+3.alter (modyfikowanie)   
+
+CREATE USER tester IDENTIFIED BY tester;
+GRANT CONNECT, RESOURCE, DBA TO tester;
+CONNECT tester/tester;
+SHOW USER;
+CREATE DATABASE nowa_baza;
+CREATE TABLE lubie_arbuzy (id INTEGER PRIMARY KEY);
+SELECT * FROM tab;
+
+SELECT * FROM lubie_arbuzy;
+ALTER TABLE lubie_arbuzy ADD gatunek varchar(20);
+ALTER TABLE lubie_arbuzy RENAME TO nie_lubie;
+SELECT * FROM tab;
+
+ALTER TABLE nie_lubie DROP COLUMN gatunek; (usuwa kolumnę)
+DROP TABLE nie_lubie;
+
+DROP DATABASE nowa_baza; 
+IV.język manipulopwania danymi dml
+
+V.język kontroli nad danymi dcl

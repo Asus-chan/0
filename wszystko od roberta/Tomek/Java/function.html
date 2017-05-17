@@ -1,0 +1,24 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <title> Tomasz Kowalski</title>
+  <meta http-equiv="content-type" contnet="text/html;charset=utf-8"/>
+  
+  <script>
+  function ktoryPrzycisk(buttonId, buttonName, buttonValue)
+  {
+  var Messege1="Identyfikator przycisku:" + buttonId+"\n";
+  var Message2="Nazwa przycisku:" + buttonName+"\n";
+  var Message3="Wartosc przycisku" + buttonValue+"\n";
+  alert(Message1 + Message2 + Messege3);
+  }
+  </script>
+  </head>
+  
+   <body>
+  <input type="button" id="id1" name="Lewy przycisk" value="LEFT" onclick="ktoryPrzycisk(this.id, this.name, this.value)"/>
+  <input type="button" id="id2" name="Srodkowy przycisk" value="CENTRAL" onclick="ktoryPrzycisk(this.id, this.name, this.value)"/>
+  <input type="button" id="id3" name="Prawy przycisk" value="RIGHT" onclick="ktoryPrzycisk(this.id, this.name, this.value)"/>
+   </body>
+  </html>        
+  

@@ -1,0 +1,19 @@
+CREATE DATABASE szkola;
+USE szkola;
+SHOW databases;
+CREATE TABLE uczniowie (
+imie VARCHAR(20),
+nazwisko VARCHAR(30),
+klasa VARCHAR(3)) ENGINE MyISAM;
+DESCRIBE uczniowie;
+INSERT INTO uczniowie(imie, nazwisko, klasa) VALUES('Jan','Adamczuk','3ti');
+select * from uczniowie;
+mysqldump
+LOCK TABLES uczniowie READ;
+UNLOCK TABLES;
+mysqldump -u root -phas這 szkola > szkola.sql
+mysqldump -u user -phas這 szkola uczniowie > uczniowie.sql
+mysqldump -u user -phas這 --all-databases > all_databases.sql
+mysql - u user -phas這 < all_databases.sql
+mysql - u user -phas這 -D szkola < szkola.sql
+mysql - u user -phas這 -D szkola < uczniowie.sql

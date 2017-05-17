@@ -1,0 +1,32 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+  
+  <meta http-equiv="content-type" contnet="text/html;charset=utf-8"/>
+      <title> Uzycie funkcji </title>
+  <script>
+  function ktoryPrzycisk(buttonId, buttonName, buttonValue)
+  {
+  var Messege1="Identyfikator przycisku:" + buttonId+"\n";
+  var Message2="Nazwa przycisku:" + buttonName+"\n";
+  var Message3="Wartosc przycisku" + buttonValue+"\n";
+  alert(Message1 + Message2 + Messege3);
+  }
+  function zmienWyglad(obrazek, obwodka)
+  {
+  ciri.src=obrazek;
+  ciri.border=obwodka;
+  }
+  </script>
+  <script>
+  var obrazek01="ciri.png";
+  var obrazek00="geralt.png";
+  </script>
+  </head>
+  
+   <body>
+  
+  <img id="ciri" src="ciri.png" alt="" border="5" onmouseover="zmienWyglad(obrazek01,30)='geralt.png'"onmouseout="zmienWyglad(obrazek00,15)"/>
+   </body>
+  </html>        
+  

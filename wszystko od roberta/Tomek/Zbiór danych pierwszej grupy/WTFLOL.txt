@@ -1,0 +1,176 @@
+INSERT INTO [tabela]- wstaw do 
+INSERT INTO miasta (nazwaMiasta) VALUES ('Berlin');
+SELECT imie, nazwisko FROM pracownicy WHERE id_pracownika = 1
+UPDATE pracownicy SET plec = 'm' aktywny = 0 WHERE id_pracownika = 6 // Po set mozemy przypisywaæ co ma byæ ustawione , po WHERE warunek do czego ma byæ to przypisane
+
+SELECT * FROM pracownicy WHERE wynagrodzenie >= 2500
+SELECT * FROM pracownicy WHERE oddzial = 3
+SELECT * FROM pracownicy WHERE oddzial != 3 // oddzia³ inny niz 3
+SELECT * FROM pracownicy WHERE oddzial <> 3 // ten sam sposób lecz inny znak
+SELECT * FROM pracownicy WHERE data_zatrudnienia >  '2012-02-23'
+SELECT * FROM pracownicy WHERE wynagrodzenie = 1000 AND oddzial =4
+SELECT * FROM pracownicy WHERE (wynagrodzenie = 1000 OR wynagrodzenie = 2000) AND oddzial =4
+SELECT * FROM pracownicy WHERE aktywny <> 1
+SELECT * FROM pracownicy WHERE aktywny = 0
+SELECT wynagrodzenie, wynagrodzenie+200 as zPodwyzka from pracownicy;
+SELECT wynagrodzenie, wynagrodzenie+200 from pracownicy;
+ SELECT wynagrodzenie, wynagrodzenie*1.1 as poPodwyzce from pracownicy;
+SELECT * FROM pracownicy WHERE plec ='m' AND data_urodzenia > '1990-01-01' 
+SELECT * FROM pracownicy WHERE plec ='m' AND wynagrodzenie >= 1000 AND wynagrodzenie <= 2000
+SELECT * FROM pracownicy WHERE plec ='m' AND wynagrodzenie BETWEEN 1000 AND 2000
+SELECT * FROM pracownicy WHERE data_zatrudnienia >= '2012-01-01' AND data_zatrudnienia <= '2012-12-31'
+SELECT * FROM pracownicy WHERE data_zatrudnienia BETWEEN '2012-01-01' AND '2013-12-31'
+SELECT * FROM pracownicy WHERE wynagrodzenie NOT BETWEEN 1000 AND 2000 // z poza przedzia³u 1000 a 2000
+SELECT * FROM pracownicy WHERE wynagrodzenie < 1000 OR wynagrodzenie > 2000
+SELECT * FROM pracownicy WHERE id_pracownika = 1 OR id_pracownika = 2 OR id_pracownika = 3
+SELECT * FROM pracownicy WHERE id_pracownika IN (1,2,3) // wyœwietl ze zbioru
+SELECT * FROM pracownicy WHERE id_pracownika NOT IN (1,2,3) // wszystkie z poza zbioru
+SELECT * FROM pracownicy WHERE imie <> 'Jan' AND wynagrodzenie > 1500 // imiê innen ni¿ Jan i przynajmniej 1500 zarobków 
+SELECT * FROM pracownicy WHERE imie = 'Jan' AND wynagrodzenie > 1500 
+SELECT * FROM pracownicy WHERE imie = 'Jan'  OR imie = "Lilia" AND wynagrodzenie > 1500 
+SELECT * FROM pracownicy WHERE imie = 'Jan' AND wynagrodzenie > 1500 
+SELECT * FROM pracownicy WHERE imie like 'J%'// imiona na literkê J gdzie % zastepuje dowoln¹ iloœæ dowolnych znaków
+SELECT * FROM pracownicy WHERE imie like 'J_' jedna litera za J
+SELECT * FROM pracownicy WHERE imie like 'ABC'
+SELECT * FROM pracownicy WHERE nazwisko like '%k'
+SELECT * FROM pracownicy WHERE imie LIKE 'Ja%n'
+SELECT * FROM pracownicy WHERE imie LIKE 'Ja%sz'
+SELECT * FROM pracownicy WHERE nazwisko LIKE 'W_e%k'
+SELECT * FROM pracownicy ORDER BY nazwisko / sortowanie domyœlne i alfabetyczne, nazywa siê "ASC" 
+B¹dz DESC i wtedy kolejnoœc jest malej¹ca albo odwrotna od alfabetycznej
+SELECT * FROM pracownicy ORDER BY wynagrodzenie DESC
+SELECT * FROM pracownicy ORDER BY nazwisko, imie / gdy nazwisko sie powtórzy to bêdzie wed³ug imienia
+SELECT * FROM pracownicy ORDER BY nazwisko , wynagrodzenie DESC
+SELECT * FROM pracownicy ORDER BY wynagrodzenie DESC LIMIT 3 / wyœwietli tylko 3 rekordy
+SELECT * FROM pracownicy ORDER BY wynagrodzenie DESC LIMIT 1 / jeden rekor najwiêkszy
+DLA ORACLE DATABASES
+SELECT * FROM employess WHERE ROWNUM <=3 ORDER BY salary DESC
+SELECT DISTINCT nazwisko FROM pracownicy / bez powtórzen, unikalne 
+SELECT * FROM pracownicy WHERE drugie_imie IS NULL // rekordy które nie maj¹ drugiego imienia , na ten rekord musi wp³ywaæ wartoœæ NULL
+
+Funkcje wbudowane:
+SELECT imie, nazwisko, YEAR(data_urodzenia) as data_urodzenia FROM pracownicy wydobycie z daty samego roku
+SELECT * FROM pracownicy WHERE data_urodzenia >= '1990-01-01' AND data_urodzenia <= '1990-12-31'
+SELECT * FROM pracownicy WHERE YEAR(data_urodzenia) = 1990 AND MONTH(data_urodzenia) >=5 
+SELECT * FROM pracownicy WHERE YEAR(data_urodzenia) = 1990 AND MONTH(data_urodzenia) =10 
+SELECT SYSDATE() AS'Dzisiejsza data'; 
+SELECT CURDATE() AS'Dzisiejsza data'; 
+DATEDIFF(yy)
+DATEDIFF(dd, data1, data2)
+
+SELECT * FROM pracownicy WHERE LENGTH(nazwisko) > 6
+SELECT LOWER(imie) AS 'imie', UPPER(nazwisko) AS 'nazwisko' FROM pracownicy
+SELECT LOWER(imie) AS 'imie', UPPER(nazwisko) AS 'nazwisko' FROM pracownicy
+SELECT CONCAT(SUBSTRING(imie, 1, 1), nazwisko)AS 'imie' FROM pracownicy
+SELECT LOWER (CONCAT(SUBSTRING(imie, 1, 1), nazwisko)) AS 'imie' FROM pracownicy
+SELECT UPPER (CONCAT(SUBSTRING(imie, 1, 1), SUBSTRING(nazwisko, 1, 5))) AS 'imie' FROM pracownicy
+SELECT LPAD (nazwisko, 25 ,'. ') AS nazwisko FROM pracownicy
+
+
+Z³¹czenie wewnêtrzne INNER JOIN
+SELECT * FROM tab1 INNER tab2 ON warunek z³¹czenia
+
+Z³¹czenie zewnêtrzne FULL OUTER JOIN
+SELECT * FROM tab1 FULL OUTER JOIN tab2 ON warunek z³¹cznia // wszystkie rekordy z tab1 i wszystkie z tab2 , wynikiem jest suma wszystkich rekordów
+ILOCZYN KARTEZJAÑSKI - krzy¿owe 
+Jeœli w jednej tabeli bêdzie 100 wyników a w drugiej 50 wyników to koñcowo wyjdzie 5000 wyników
+
+SELECT * FROM tab1 LEFT OUTER JOIN tab2 ON warunek z³¹cznia // bierze z lewej strony i próbuje je przyrównaæ do tabeli z prawej strony
+SELECT * FROM tab1 RIGHT OUTER JOIN tab2 ON warunek z³¹cznia // odwrotnoœc do lewej strony, z prawej przyrównuje do lewej strony
+
+
+SELECT imie, nazwisko, nazwaOddzialu FROM pracownicy INNER JOIN oddzialy ON pracownicy.oddzial=id_oddzialu
+SELECT imie, nazwisko , nazwaOddzialu FROM pracownicy, oddzialy WHERE pracownicy.oddzial=id_oddzialu;
+SELECT imie, nazwisko, nazwaOddzialu FROM pracownicy, oddzialy WHERE pracownicy.oddzial=id_oddzialu AND nazwaOddzialu ='IT';
+SELECT imie, nazwisko, wynagrodzenie ,nazwaOddzialu FROM pracownicy, oddzialy WHERE pracownicy.oddzial=id_oddzialu ORDER BY wynagrodzenie DESC LIMIT 1
+SELECT imie, nazwisko, wynagrodzenie ,nazwaOddzialu FROM pracownicy, oddzialy WHERE pracownicy.oddzial=oddzialy.id_oddzialu ORDER BY nazwaOddzialu
+SELECT imie, nazwisko,nazwaOddzialu FROM pracownicy, oddzialy WHERE pracownicy.id_pracownika=oddzialy.kierownikId
+SELECT imie, nazwisko,nazwaOddzialu FROM pracownicy, oddzialy WHERE pracownicy.id_pracownika=oddzialy.kierownikId
+SELECT imie, nazwisko, nazwaOddzialu, nazwaMiasta FROM pracownicy, oddzialy, miasta WHERE pracownicy.oddzial = oddzialy.id_oddzialu AND miasta.id_miasta = oddzialy.miastoId
+
+SELECT nazwisko, imie , nazwa_Miasta FROM pracownicy INNER JOIN oddzialy ON pracownicy.oddzial = oddzialy.id_oddzialu INNER JOIN miasta ON oddzialy.miastoId = miasta.id_miasta
+WHERE SUBSTRING (nazwisko ,1, 1) = SUBSTRING (nazwaMiasta, 1, 1)
+
+SELECT COUNT(*) AS liczbaPracownikow FROM pracownicy;
+SELECT COUNT (*) AS liczbaPracownikow FROM pracownicy WHERE aktywny = 1;
+SELECT COUNT(*) AS liczbaPracownikow FROM pracownicy, oddzialy, miasta WHERE pracownicy.oddzial+oddzialy.id_oddzialu AND oddzialy.miastoId=miasta.id_miasta AND nazwaMiasta='Warszawa';
+
+SELECT SUM(wynagrodzenie)*12 FROM pracownicy WHERE aktywny = 1;
+SELECT SUM(wynagrodzenie) AS najmniejszaPensja FROM pracownicy;
+SELECT MIN(LENGTH(imie)) AS najkrotszeImie FROM pracownicy;
+SELECT MAX(wynagrodzenie)-MIN(wynagrodzenie) AS roznicaPensji FROM pracownicy;
+SELECT AVG (wynagrodzenie) AS srednia MAX(wynagrodzenie) AS maksymalna MIN(wynagrodzenie) AS minimalna
+SELECT AVG(wynagrodzenie)-MIN(wynagrodzenie) AS podwyzka FROM pracownicy;
+SELECT MAX(data_urodzenia) FROM pracownicy;
+SELECT * FROM pracownicy WHERE data_urodzenia = "1995-05-28';
+SELECT wynagrodzenie, COUNT (*) AS liczbaZarabiajacych FROM pracownicy GROUP BY wynagrodzenie;
+SELECT DISTINCT wynagrodznie FROM pracownicy;
+// distinct pomija³o kiedy wartoœæ powtarza³a siê któryœ raz
+SELECT nazwaOddzialu, COUNT(*) FROM oddzialy, pracownicy WHERE pracownicy.oddzial=oddzialy.id_oddzialu GROUP BY nazwaOddzialu;
+SELECT nazwaOddzialu, COUNT(*) FROM oddzialy JOIN pracownicy ON oddzialy.id_oddzialu=pracownicy.oddzial GROUP BY nazwaOddzialu;
+SELECT nazwaOddzialu, COUNT(*) FROM oddzialy LEFT OUTER JOIN pracownicy ON pracownicy.oddzial=oddzialy.id_oddzialu GROUP BY bazwaOddzialu;
+
+Kruk Dodaje
+select SUM(cyfra) FROM(SELECT 1 as cyfra UNION SELECT 2 UNION SELECT 3) as liczba komenda na policzenie sumy liczby 1,2,3
+select * FROM pracownicy, oddzialy WHERE pracownicy.id_pracownika=oddzialy.kierownikId AND nazwaOddzialu ='IT' wyœwietl kierownika oddzia³u IT
+select * FROM pracownicy WHERE wynagrodzenie = (SELECT wynagrodzenie FROM pracownicy, oddzialy WHERE pracownicy.id_pracownika=oddzialy.kierownikId AND oddzialy.nazwaOddzialu= 'IT')-200 poka¿ osoby zarabiaj¹ce 200 z³ mniej ni¿ kierownik dzia³u IT
+SELECT nazwaOddzialu as n, imie, nazwisko FROM pracownicy as p, oddzialy as o WHERE p.oddzial=o.id_oddzialu ORDER BY n; u¿ycie aliasów skrócenie zapytania do bazy:D
+
+polecenia DML
+
+INSERT INTO - wstawianie danych
+UPDATE - zmiana danych
+DELETE - usuwanie danych
+
+INSERT INTO nazwa_tabeli (nazwa_kolumny_3, nazwa_kolumny_1, nazwa_kolumny_2) VALUES (wartosc3, watrosc1, wartosc2);
+
+UPDATE nazwa_tabeli SET nazwa_kolumny_1 = nowa_wartosc;zmieni wszystkie rekordy
+
+UPDATE nazwa_tabeli SET nazwa_kolumny_1 = nowa_wartosc WHERE ;kiedy chcemy konkretny warunek
+
+DELETE FROM nazwa_tabeli WHERE id_rekordu = 99; kiedy chcemy wywaliæ coœ tylko w danym rekordzie
+
+SELECT imie , nazwisko, wynagrodzenie FROM pracownicy WHERE <1000 OR wynagrodzenie >2000;
+
+% - dowolna iloœæ dowolnych znaków 
+
+_ - dok³adnie jeden znak
+
+[G-W] - dowolna litera od G do W
+
+[DHL] - litera D lub H lub L
+
+[^DHL] - dowolna litera ró¿na od D i H i L
+
+[^G-W] - litery od A do F i X i dalej
+
+YEAR, MONTH, DAY
+
+SUBSTRING('text', 1, 3)  text lubb zmienna z tekstem , znak od którego zaczynamy, iloœæ znaków które wycinamy
+
+LENGHT, UPPER, LOWER, CONCAT
+
+INNER JOIN - 
+SELECT * FROM tabela1 INNER JOIN tabela2 ON warunek z³¹czenia 
+
+OUTER JOIN - 
+SELECT * FROM tabela1 OUTER JOIN tabela2 ON warunek z³¹czenia 
+
+COUNT -zlicza rekordy
+
+SUM - wylicza sumê wartoœci dla wybranych rekordów
+MIN - znajduje wartoœæ najmniejsz¹ 
+MAX - wartoœæ najwiêksz¹
+AVG - wylicza œredni¹
+
+SELECT COUNT(*) AS ile_kobiet FROM pracownicy WHERE plec = 'k'
+
+pracownicy, oddzialy
+pracownicy.oddzial = oddzialy.id oddzialu
+
+oddzialy.miastaid = miasta.id_miasta
+
+where oddzialy.miastoId = miasto.id_miasta and nazwaMiasta = "Wenecja"
+
+
+maciek nie dzia³a  
