@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Tomasz Kowalski</title>
+</head>
+<body>
+
+<input type="text" value="Imie" id="imie" />&nbsp &nbsp &nbsp
+
+<input type="button" name="przycisk1" value="Kobieta" onclick="k()" />&nbsp
+<input type="button" name="przycisk2" value="Menszczyzna" onclick="m()" />&nbsp
+
+
+<h3 id="spr"></h3>
+
+
+
+<script>
+function k()
+{
+
+var imie = document.getElementById("imie").value;
+
+document.getElementById("spr").innerHTML += "Witaj" + imie;
+
+
+
+
+
+
+
+}
+
+function m()
+{
+
+var m1 = document.getElementById("m").value;
+
+document.getElementById("spr").innerHTML = "Witaj "+ m1;
+
+} 
+
+
+</script>
+</div>
+</body>
+</html>
