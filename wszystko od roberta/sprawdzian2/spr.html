@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Kasia Kubanek</title>
+</head>
+<body>
+
+<input type="text" id="a1" />
+<input type="text" id="a2" /><br /><br />
+<input type="button" value="Przycisk 1" onclick="wyswietl()" />
+<input type="button" value="Przycisk 2" onclick="zniknij()" />
+<input type="button" value="Przycisk 3" onclick="przywroc()" /><br /><br />
+
+<h3 id="info">Witaj w piekle 2.0</h3>
+
+<script>
+function wyswietl()
+{
+var c1 = document.getElementById("a1").value;
+document.getElementById("info").innerHTML = c1;
+document.getElementById("info").innerHTML += ". ";
+var c2 = document.getElementById("a2").value;
+document.getElementById("info").innerHTML += c2;
+}
+
+function zniknij()
+{
+document.getElementById("info").innerHTML = null;
+}
+
+function przywroc()
+{
+
+}
+</script>
+</body>
+</html>

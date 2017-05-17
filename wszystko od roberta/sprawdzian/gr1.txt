@@ -1,0 +1,3 @@
+zad 6 SELECT nazwisko FROM pracownicy WHERE LENGTH(nazwisko) < 10
+
+zad 7 SELECT UPPER (CONCAT(SUBSTRING(imie, 1, 1), SUBSTRING(nazwisko, 1, 3))) AS 'login' FROM pracownicy

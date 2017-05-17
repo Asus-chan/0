@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+<input type = "text" id = "liczba" /><br />
+<input type = "button" value = "Dodaj do kolejki" onclick = "dodaj();" /><br />
+<input type = "button" value = "Zdejmij z kolejki" onclick = "zdejmij();" /><br />
+<p id="a9">null</p>
+<p id="a8">null</p>
+<p id="a7">null</p>
+<p id="a6">null</p>
+<p id="a5">null</p>
+<p id="a4">null</p>
+<p id="a3">null</p>
+<p id="a2">null</p>
+<p id="a1">null</p>
+<p id="a0">null</p>
+<script>
+var i;
+var kolejka = new Array();
+n = 10;
+initialize();
+
+function initialize()
+{
+	var j;
+	for(j=0; j<n; j++)
+	{
+		kolejka[j] = "null"; //W chrome i firefoxie te null muszą być w "", w ie ten problem nie występuje i null można wpisać z "" lub bez
+	}
+	i = -1;
+}
+
+function enq(element)
+{	
+	i++
+	kolejka[i] = element;
+}
+
+function deq()
+{
+	var z = kolejka[0];
+	for(j=0; j<i; j++)
+	{
+		kolejka[j] = kolejka[j+1];
+	}
+	kolejka[i] = "null"; //W chrome i firefoxie te null muszą być w "", w ie ten problem nie występuje i null można wpisać z "" lub bez
+	i--;
+	return z;
+}
+
+function full()
+{
+	if(i == (n-1)) return true;
+	else return false;
+}
+
+function empty()
+{
+	if(i == -1) return true;
+	else return false;
+}
+
+function dodaj()
+{
+	var liczba = parseInt(document.getElementById("liczba").value);
+	if(!full())enq(liczba);
+	else alert("KOLEJKA JEST PEŁNA, GNOJKU.");
+	document.getElementById("a"+i).innerHTML = liczba;
+}
+
+function zdejmij()
+{
+	if(!empty())var x = deq();
+	else alert("KOLEJKA JEST PUSTA, GNOJKU.");
+	for(j=0; j<n; j++)
+	{
+		document.getElementById("a"+(j)).innerHTML = kolejka[j];
+	}
+}
+</script>
+</body>
+</html>
