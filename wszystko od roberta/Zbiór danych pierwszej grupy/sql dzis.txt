@@ -1,0 +1,47 @@
+Numerujcie zadania pls !!!
+
+
+zad 18 
+select * from pracownicy where data_urodzenia=( select max(data_urodzenia) from pracownicy)
+
+
+
+
+
+
+select * from pracownicy where wynagrodzenie >= 2000
+select imie, nazwisko, YEAR(data_zatrudnienia) as data_zatrudnienia from pracownicy where aktywny = 1
+
+SELECT * FROM pracownicy WHERE nazwisko like '%k'
+SELECT * FROM pracownicy WHERE data_zatrudnienia >= '2012-03-01 '
+SELECT DISTINCT imie FROM pracownicy
+7. SELECT LOWER (CONCAT(SUBSTRING(imie, 1, 1), SUBSTRING(nazwisko, 1))) AS 'login' FROM pracownicy;
+
+
+5!
+select imie, nazwisko, MONTH(data_zatrudnienia) as data_zatrudnienia from pracownicy where aktywny = 1
+
+6
+select nazwisko from pracownicy where length(nazwisko) < 10
+select nazwisko from pracownicy where nazwisko like '______%'
+takie g³upie ale dzia³a XD
+
+
+8
+SELECT imie, nazwisko, nazwaOddzialu FROM pracownicy INNER JOIN oddzialy ON pracownicy.oddzial=id_oddzialu ;
+
+10
+SELECT imie, nazwisko, nazwaOddzialu, nazwaMiasta FROM pracownicy, oddzialy, miasta WHERE pracownicy.oddzial = oddzialy.id_oddzialu AND miasta.id_miasta = oddzialy.miastoId
+
+11 
+SELECT COUNT(*) as liczbaPracowników FROM pracownicy WHERE drugie_imie IS NULL
+
+12
+SELECT SUM(wynagrodzenie)*12 AS wszystkiePensje FROM pracownicy;
+
+13
+SELECT MIN(LENGTH(imie)) AS najkrotszeImie FROM pracownicy;
+
+19. select * FROM pracownicy WHERE wynagrodzenie = (SELECT wynagrodzenie FROM pracownicy, oddzialy WHERE pracownicy.id_pracownika=oddzialy.kierownikId AND oddzialy.nazwaOddzialu= 'IT')-200
+
+20. select SUM(cyfra) FROM(SELECT 1 as cyfra UNION SELECT 2 UNION SELECT 3) as liczba komenda na policzenie sumy liczby 1,2,3

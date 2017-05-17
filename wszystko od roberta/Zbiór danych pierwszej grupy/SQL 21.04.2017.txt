@@ -1,0 +1,2 @@
+SELECT * FROM pracownicy WHERE imie = 'Jan' AND nazwisko = 'Kowalski';
+' OR ''=''

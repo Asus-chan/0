@@ -1,0 +1,69 @@
+1.Policz wsztystkich praowników
+SELECT COUNT (*)as liczbaPracowników
+
+02. Policz wszystkich pracowników którzy nie mają drugiego imienia 
+SELECT COUNT (*) as liczbaPracowników FROM pracownicy WHERE drugie_imie IS NULL;
+03. policz wszystkich aktywnych pracowników 
+SELECT COUNT (*) as aktywniPracownicy FROM pracownicy WHERE aktywny = 1;
+
+04.policz ilu pracowników pracuje w dziale IT 
+SELECT COUNT (*) as pracownicyDziałuIT FROM pracownicy, oddzialy WHERE pracownicy.oddzial=oddzialy.id_oddzialu AND nazwaOddzialu='IT';
+05. Policz wsztystkich pacowników którzy pracują w oddziałach znajdujących się w Warszawie... 
+SELECT COUNT (*) as pracownicyWarszawscy FROM pracownicy, oddzialy, mista WHERE pracownicy.oddzial=oddzialy.id_oddzialu AND oddzialy.miastoId=nazwaMiasta='Waszaw'
+
+
+07.Wylicz ile pracodawca wydaje rocznie na pensje
+SELECT SUM(wynagrodzenie)*12 FROM pracownicy WHERE Aktywy=1;
+
+
+08. Znajdź minimalne ynagrodzenien wypłacane pracownikom
+SELECT MIN (wynagrodzenie) as najmniejszaPensja FROM pracownicy;
+
+
+09.Policz z ilu liter składa si e najkrótsze imie zatrunionego pracownika 
+SELECT MIN(LENGTH(imie)) as liczbaLiteraImienia FROM pracownicy;
+
+11. Sprawdź jaka jest różnica pomiędzy maksymalną a minimalną pensją 
+SELECT MAX (wynagrodzenie)-MIN(wynagrodzenie) as roznicaWynagrodzenia FROM pracownicy;
+12.policz średnią, minimalną i maksymalną wysokość pensji pracowników działu IT 
+SELECT AVG (wynagrodzenie) as srednia, MIN (wynagrodzenie) as minimalna, MAX(wynagrodzenie) as Maksymalna FROM pracownicy, oddzialy WHERE pracownicy.oddzial=oddzialy.id_oddzialu AND nazwaOddzialu = 'IT'; 
+
+13. O ile należałoby podnieść pensję pracownikowi, który zarabia najmniej aby jego pensja wynosiła tyle co obecna średnia pensja
+SELECT AVG(wynagrodzenie)-MIN(wynagrodzenie) as podwyzka FROM pracownicy;
+
+17. Wyświetl wszystkie unikatowe wyokości płac w firmie i dla każdej z tych wartości policz ilu praci\owników zarabia własnie taką kwotę
+SELECT wyngrodzenie, COUNT(*) AS liczbaPracowników FROM pracownicy ROUP BY wynagrodzenie
+
+
+OPERACJE NA ZBIORACH
+
+UNION ALL(???nwm czy dobrze???)
+
+SELECT imie FROM pracownicy WHERE wynagrodzenie < 1000 UNION ALL SELECT drugie_imie FROM pracownicy WHERE wynagrodzennie > 2000
+
+(???nwm czy dobrze???)
+
+INTERSECT (to co robi)
+
+Wyświetl dane pracowników których arrobki są mniejsze niż 1000 lub większe niż 2000
+SELECT * FROM pracownicy WHERE wynagrodzenie < 1000 OR wynagrodzenie > 2000
+
+
+SELECT MAX(wynagrodzenie) FROM pracownicy
+
+SELECT * FROM pracownicy WHERE wynagrodzenie =(SELECT MAX(wynagrodzenie) FROM pracownicy)
+
+  ŚREDNIA FIRMY
+ SELECT AVG(wynagrodzenie) FROM pracownicy
+ 
+ PODZAPYTANIE O ILOĆ PRACOWNIKÓW Z WYNAGRODZENIEM WIĘKSZYM NIZ SREDNIA FIRMY
+  SELECT * FROM pracownicy WHERE wynagrodzenie > (SELECT AVG(wynagrodzenie) FROM pracownicy); 
+  
+WYWIETL DANE NAJMLODZSZEGO PRACOWNIKA W FIRMIE
+SELECT * FROM pracownicy WHERE data_urodzenia 
+SELECT * FROM pracownicy WHERE data_urodzenia = (SELECT * MAX(data_urodzenia) FROM pracownicy) 
+
+
+  select 1 as cyfra union all SELECT 2 UNION ALL SELECT 3
+  
+SELECT SUM(cyfra) FROM(SELECT 1 AS cyfra UNION ALL SELECT 2 UNION ALL SELECT 3) AS liczba

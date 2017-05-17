@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+<input type = "text" id = "liczba" /><br />
+<input type = "button" value = "Dodaj do kolejki" onclick = "dodaj();" /><br />
+<input type = "button" value = "Zdejmij z kolejki" onclick = "zdejmij();" /><br />
+<input type = "button" value = "Inicjuj" onclick = "reset();" /><br />
+
+<p id="a1"><form action="test.html" method="post">
+<input type="text" name="1" value="" size="30" /> <input type="text" name="2" value="" size="30" />
+</form></p>
+<p id="a0"><form><input type="button" name="p1" value="Góra" onclick="dodaj();" />
+<input type="button" name="p2" value="Dół" onclick="zdejmij();" />
+<input type = "button" value = "Reset" onclick = "reset();" />
+</form></p>
+<script>
+var i, j;
+var kolejka = new Array();
+n = 2;
+initialize();
+
+function initialize()
+{
+	var k;
+	for(k=0; k<n; k++)
+	{
+		kolejka[k] = ""; 
+	}
+	j = -1;
+	i = 0;
+}
+
+function enq(element)
+{	
+	j++;
+	if(j==2) j = 0;
+	kolejka[j] = element;
+}
+
+function deq()
+{
+	var z = kolejka[i];
+	kolejka[i] = "null"; 
+	if(i==2) i = 0;
+	else i++;
+	return z;
+}
+
+function full()
+{
+	return false;
+}
+
+function empty()
+{
+	return false;
+}
+
+function dodaj()
+{
+	var a1 = parseInt(document.getElementById("a1").value);
+	if(!full())enq(a1);
+	else alert("KOLEJKA JEST PEŁNA, GNOJKU.");
+	for(k=0; k<n; k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = kolejka[k];
+	}
+}
+
+function zdejmij()
+{
+	if(!empty())var x = deq();
+	else alert("KOLEJKA JEST PUSTA, GNOJKU.");
+	for(k=0; k<n; k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = kolejka[k];
+	}
+}
+function reset()
+{
+	initialize();
+	for(k=0;k<n;k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = "null"; 
+	}
+}
+</script>
+</body>
+</html>

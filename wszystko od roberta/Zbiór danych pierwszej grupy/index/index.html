@@ -1,0 +1,48 @@
+<DOCTYPE!>
+<html= lang="pl">
+<head>
+ <meta charset="utf-8" />
+<script>
+function start()
+{
+	var powitaj=alert("Zaczynamy! Kliknij okej by kontynuować");
+}
+
+function wprowadzliczbe()
+{
+	var zakonczenie="<h1>Zła liczba kończymy działanie</h1>";
+	var a=prompt("Wpisz dowolną liczbę całkowitą mniejszą niż -2 : ");
+  if(a>=-2)
+  {
+  document .getElementById("strona").innerHTML =zakonczenie;
+  }
+  else
+  {
+  var y=a*-1;
+        
+		var x = parseInt(y);
+		var z = x % 2;
+   if(z==0)
+   {
+   document.write("Liczba " + x + " jest liczbą parzystą ");
+   var g=1000/x;
+   alert("nasza liczba mieści się w 1000 : " + g + " razy");
+   }
+   else   
+{
+document.write("Liczba " + x + " nie jest liczbą parzystą ");
+
+   }
+  }
+}
+</script>
+ </head>
+<body>
+<div id="strona">
+<script>
+start();
+wprowadzliczbe();
+</script>
+</div>
+</body>
+</html>

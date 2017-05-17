@@ -1,0 +1,43 @@
+@charset "utf-8";
+/*css document*/
+body {
+background: #CCC;
+}
+
+#wrapper {
+width: 80%;
+height: 100px;
+margin: 0 auto;
+}
+
+#cos {
+background: none;
+position: relative;
+top: 50px;
+left: 50px;
+
+-moz-animation-name: przesun;
+-moz-animation-duration: 3s;
+
+-webkit-animation-name: przesun;
+-webkit-animation-duration: 3s;
+}
+
+/*@-moz-keyframes przesun{
+from{-moz-transform:translateX(0px);}
+to{-moz-transform: translateX(700px);}
+}*/
+
+@-moz-keyframes przesun{
+0%{-moz-transform: translateX(0);}
+33%{-moz-transform: translateX(400px);}
+66%{-moz-transform: translateX(200px);}
+100%{-moz-transform: translateX(400px);}
+}
+
+@-webkit-keyframes przesun{
+0%{-webkit-transform: translateX(0);}
+33%{-webkit-transform: translateX(400px);}
+66%{-webkit-transform: translateX(200px);}
+100%{-webkit-transform: translateX(400px);}
+}

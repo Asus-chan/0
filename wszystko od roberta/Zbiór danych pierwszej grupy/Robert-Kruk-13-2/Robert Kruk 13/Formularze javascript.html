@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="utf-8" lang="pl">
+</head>
+<body>
+	<script>
+	function najwieksz()
+	{
+		document .getElementById("text1").innerHTML =zakonczenie;
+		var x2 = parseInt(document.getElementById("text2").value);
+		var x3 = parseInt(document.getElementById("klik3").value);
+		
+		if(x1<x2)
+		{
+		if(x3<x2)
+		{
+		alert("Liczba 2 jest największa" );
+		}
+		else
+		{
+		alert("Liczba 3 jest Większa");
+		}
+		}
+		else
+		{
+		if(x1>x3)
+		{
+		alert("Liczba 1 Jest Najwieksza");
+		}
+		else
+		alert("Liczba 3 Jest Największa");
+		}
+		
+	}
+	
+	
+	
+	
+	</script>
+
+	<input type="text" id="klik1" /><br />
+	<input type="text" id="klik2" /><br />
+	<input type="text" id="klik3" /><br />
+	<input type="button" value="Sprawdź" onclick="najwieksz();" />
+	<script>
+	
+	
+	
+	
+	
+	</script>
+
+
+
+</body>
+</html>
