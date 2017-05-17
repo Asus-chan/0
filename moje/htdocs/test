@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Maciej Czechyra</title>
+</head>
+<body>
+<form action="test.html" method="post">
+<input type="text" name="a1" value="" size="30" />
+<input type="text" name="a2" value="" size="30" /><br /><br />
+<input type="button" name="b1" value="Przycisk 1" onclick="wyswietl()" />
+<input type="button" name="b2" value="Przycisk 2" onclick="zniknij" />
+<input type="button" name="b3" value="Przycisk 3" onclick="przywroc()" />
+</form>
+
+</body>
+</html>

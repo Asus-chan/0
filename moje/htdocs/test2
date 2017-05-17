@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<title>Maciej Czechyra</title>
+</head>
+<body>
+<p id="a0">
+<form action="test.html" method="post">
+<input type="text" name="1" value="" size="30" /> <input type="text" name="2" value="" size="30" />
+</form>
+</p>
+<p id="a1">
+<input type="button" name="p1" value="Góra" onclick="pgup()" />
+<input type="button" name="p2" value="Dół" onclick="pgdown()" />
+<input type="button" name="p3" value="Reset" onclick="reset()" />
+</p>
+
+<div id="cuś">
+<h2>Heloo my friend</h2>
+</div>
+
+<script>
+function pgup2()
+{
+	var liczba = parseInt(document.getElementById("liczba").value);
+	if(!full())enq(liczba);
+	else alert("KOLEJKA JEST PEŁNA, GNOJKU.");
+	for(k=0; k<n; k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = kolejka[k];
+	}
+}
+
+function pgdown2()
+{
+	if(!empty())var x = deq();
+	else alert("KOLEJKA JEST PUSTA, GNOJKU.");
+	for(k=0; k<n; k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = kolejka[k];
+	}
+}
+
+function reset()
+{
+
+}
+
+var i, j;
+var kolejka = new Array();
+n = 2;
+initialize();
+
+function initialize()
+{
+	var k;
+	for(k=0; k<n; k++)
+	{
+		kolejka[k] = "null"; //W chrome i firefoxie te null muszą być w "", w ie ten problem nie występuje i null można wpisać z "" lub bez
+	}
+	j = -1;
+	i = 0;
+}
+
+function enq(element)
+{	
+	j++;
+	if(j==10) j = 0;
+	kolejka[j] = element;
+}
+
+function deq()
+{
+	var z = kolejka[i];
+	kolejka[i] = "null"; //W chrome i firefoxie te null muszą być w "", w ie ten problem nie występuje i null można wpisać z "" lub bez
+	if(i==9) i = 0;
+	else i++;
+	return z;
+}
+
+function full()
+{
+	return false;
+}
+
+function empty()
+{
+	return false;
+}
+
+function pgup()
+{
+	var liczba = parseInt(document.getElementById("liczba").value);
+	if(!full())enq(liczba);
+	else alert("KOLEJKA JEST PEŁNA, GNOJKU.");
+	for(k=0; k<n; k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = kolejka[k];
+	}
+}
+
+function pgdown()
+{
+	if(!empty())var x = deq();
+	else alert("KOLEJKA JEST PUSTA, GNOJKU.");
+	for(k=0; k<n; k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = kolejka[k];
+	}
+}
+function zeruj()
+{
+	initialize();
+	for(k=0;k<n;k++)
+	{
+		document.getElementById("a"+(k)).innerHTML = "null"; //W chrome i firefoxie te null muszą być w "", w ie ten problem nie występuje i null można wpisać z "" lub bez
+	}
+}
+
+</body>
+</html>

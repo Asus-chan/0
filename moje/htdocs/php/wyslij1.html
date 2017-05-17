@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+</head>
+<body>
+<script>
+
+if(typeof XMLHttpRequest == "undefined" )
+{
+	ajax = new ActiveXObject('Microsoft.XMLHTTP')
+	
+}
+else
+{
+	ajax = new XMLHttpRequest();
+}
+function wyslij()
+{
+	ajax.open('POST', "odbierz.php", true);
+	ajax.setRequestHeader('Content-Type','application/x-www-from-urlencoded');
+	ajax.send("dane1=123123&dane2=ggggggggg");
+}
+</script>
+Miasto:&nbsp;<input id="txt1" type="text" name="maisto" value="" /><br />
+Ulica:&nbsp;<input id="txt2" type="text" name="ulica" value="" /><br />
+<p>Kliknij poniższy przycisk aby wysłać dae na serwer </p>
+<input type="button" value="wyslij" onclick="wyslij();">
+</body>
+</html>

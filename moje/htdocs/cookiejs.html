@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta  charset = "utf-8" />
+</head>
+<body>
+
+<script>
+document.cookie = "login = gorilla; expires=07/03/2017 15:20:00";
+
+function showCookie(name) 
+{
+	if(document.cookie != '')
+	{
+		var cookies = document.cookie.split(";");
+		for(var i = 0; i < cookie.length; i++)
+		{	
+		var cookieName=cookies[i].split('=')[0];
+		var cookieValue=cookies[i].split('=')[1];
+		if(cookieName === name)
+		}
+		return decodeURI(cookieValue);
+	}
+}
+</script>
+</body>
+</html>

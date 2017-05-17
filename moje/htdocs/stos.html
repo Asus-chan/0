@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+<input type="text" id="liczba" /><br />
+<input type="button" value="Dodaj na stos" onclick="dodaj();" /><br />
+<input type="button" value="Zdejmij ze stosu" onclick="zdejmij();" /><br />
+<p id="a10">null</p>
+<p id="a9">null</p>
+<p id="a8">null</p>
+<p id="a7">null</p>
+<p id="a6">null</p>
+<p id="a5">null</p>
+<p id="a4">null</p>
+<p id="a3">null</p>
+<p id="a2">null</p>
+<p id="a1">null</p>
+<script>
+var i;
+var stos = new Array();
+var n = 11;
+initialize();
+function initialize()
+{
+i = 0;
+var j;
+for(j=0;j<n;j++)
+{
+stos[j] = "null";
+}
+}
+function push(element)
+{
+i++;
+stos[i] = element;
+}
+function pop()
+{
+var k = stos[i];
+stos[i] = "null";
+i--;
+return k;
+}
+function full()
+{
+if(i>=(n-1))return true;
+else return false;
+}
+function empty()
+{
+if(i==0)return true;
+else return false;
+}
+function dodaj()
+{
+var liczba = parseInt(document.getElementById("liczba").value);
+if(!full())push(liczba);
+else alert("STOS JEST PEŁNY");
+for(j=1;j<n;j++)
+{
+document.getElementById("a"+j).innerHTML = stos[j];
+}
+}
+function zdejmij()
+{
+if(!empty())var x = pop();
+else alert("STOS JEST PUSTY")
+for(j=1;j<n;j++)
+{
+document.getElementById("a"+j).innerHTML = stos[j];
+}
+}
+</script>
+</body>
+</html>
