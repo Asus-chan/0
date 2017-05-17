@@ -1,0 +1,3 @@
+﻿<h1>WITAJ W ŚWIECIE KOŃCA ŚWIATA</h1>
+<p>Postawowe działania</p>
+<a href="index1.html">Kliknij aby Wrócić</a>

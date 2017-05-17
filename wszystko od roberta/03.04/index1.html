@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Technologia Ajax</title>
+<meta charset="utf-8" lang="pl" />
+</head>
+<body>
+<script>
+var ajax;
+if(typeof XMLHttpRequest == "undefined")
+{
+ajax = new ActiveXObject('Microsoft.XMLHTTP');
+}
+else
+{
+ajax = new XMLHttpRequest();
+}
+function pobierz(zasob, znacznik)
+{
+	ajax.open("GET", "./"+zasob, "true");
+	ajax.setRequestHeader("Content-Type","application/x-www-from-urlencoded;charset=UTF-8");
+	ajax.onreadystatechange = function()
+	{
+		if(ajax.readyState == 4 && ajax.status == 200) wypisz(ajax.responseText, znacznik);
+		else document.getElementById(znacznik).innerHTML = "Czekaj ...";
+	}
+	ajax.send();
+}
+function wypisz(zawartosc, identyfikator)
+{
+	document.getElementById(identyfikator).innerHTML = zawartosc;
+}
+</script>
+<div id="info">Kliknij przycisk poniżej Aby pobrać dane z serwera</div>
+<input type="button" value="Pobierz danez z serwera" onclick="pobierz('tekst.txt', 'info');" />
+</body>
+</html>
